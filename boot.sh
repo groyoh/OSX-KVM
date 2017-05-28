@@ -26,7 +26,7 @@ qemu-system-x86_64 -enable-kvm -m 8192 -cpu core2duo,kvm=off \
 	  -smbios type=2 \
 	  -device ide-drive,bus=ide.2,drive=MacHDD \
 	  -drive id=MacHDD,if=none,file=./mac_hdd.img \
-	  -netdev tap,id=net0,ifname=tap0,script=no,downscript=no -device e1000-82545em,netdev=net0,id=net0,mac=52:54:00:c9:18:27 \
+	  -netdev user,id=usr0,hostfwd=tcp::2222-:22 -device e1000-82545em,netdev=usr0,id=vnet0 \
 	  -monitor stdio \
 	  -device ide-drive,bus=ide.0,drive=MacDVD \
 	  -drive id=MacDVD,if=none,snapshot=on,file=./Install_OS_X_10.11.6_El_Capitan.iso
